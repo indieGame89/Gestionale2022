@@ -41,6 +41,7 @@ public class Test {
 
         System.out.println("\n\nStampa lista");
         db.stampa_dipendenti(lista_impiegati);
+        db.salvaNelDb(lista_impiegati);
 
     }
 
