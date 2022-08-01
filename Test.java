@@ -1,9 +1,6 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.sql.SQLException;
 
 public class Test {
 
@@ -18,7 +15,8 @@ public class Test {
         String usr="postgres";
         String passw= "emandfp";
 
-        String SQL = "INSERT INTO Impiegati(nome, cognome, eta)"+"VALUES(?,?,?)";
+        //String SQL = "INSERT INTO impiegato.impiegati values ('eee','fff',38)";
+        String SQL_Param = "INSERT INTO impiegato.impiegati values (?,?,?)";
 
         ArrayList<Impiegati> lista_impiegati=new ArrayList<>();
 
@@ -27,11 +25,19 @@ public class Test {
         try{
 
             Connection connessione= DriverManager.getConnection(serverURL, usr, passw);
-            PreparedStatement query = connessione.prepareStatement(SQL);
 
-            query.setString(1,impQuery.getNome());
-            query.setString(2,impQuery.getCognome());
-            query.setInt(3,impQuery.getEta());
+            /*INSERIMENTO QUERY STATICA*/
+            /*Statement query = connessione.createStatement();
+            query.executeUpdate(SQL);*/
+
+            /*INSERIMENTO QUERY PARAMETRICA*/
+            PreparedStatement query = connessione.prepareStatement(SQL_Param);
+            query.setString(1, impQuery.getNome());
+            query.setString(2, impQuery.getCognome());
+            query.setInt(3, impQuery.getEta());
+
+            query.executeUpdate();
+            connessione.close();
 
         } catch (SQLException e){
 
