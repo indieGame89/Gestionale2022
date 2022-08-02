@@ -7,6 +7,7 @@ public class Test {
     public static void main(String [] args){
 
         Impiegati impQuery=new Impiegati("aaa","Fenu", 150);
+        Impiegati imp_rs;
         Scanner input=new Scanner(System.in);
         String nome, cognome;
         int eta;
@@ -16,7 +17,8 @@ public class Test {
         String passw= "emandfp";
 
         //String SQL = "INSERT INTO impiegato.impiegati values ('eee','fff',38)";
-        String SQL_Param = "INSERT INTO impiegato.impiegati values (?,?,?)";
+        //String SQL_Param = "INSERT INTO impiegato.impiegati values (?,?,?)";
+        //String SQL_stampa="SELECT * FROM impiegato.impiegati";
 
         ArrayList<Impiegati> lista_impiegati=new ArrayList<>();
 
@@ -26,17 +28,29 @@ public class Test {
 
             Connection connessione= DriverManager.getConnection(serverURL, usr, passw);
 
-            /*INSERIMENTO QUERY STATICA*/
-            /*Statement query = connessione.createStatement();
-            query.executeUpdate(SQL);*/
+            /*INSERIMENTO QUERY STATICA
+                Statement query = connessione.createStatement();
+                query.executeUpdate(SQL);
+            */
 
-            /*INSERIMENTO QUERY PARAMETRICA*/
-            PreparedStatement query = connessione.prepareStatement(SQL_Param);
-            query.setString(1, impQuery.getNome());
-            query.setString(2, impQuery.getCognome());
-            query.setInt(3, impQuery.getEta());
 
-            query.executeUpdate();
+            /*INSERIMENTO QUERY PARAMETRICA
+                PreparedStatement query = connessione.prepareStatement(SQL_Param);
+                query.setString(1, impQuery.getNome());
+                query.setString(2, impQuery.getCognome());
+                query.setInt(3, impQuery.getEta());
+
+                query.executeUpdate();
+            */
+
+            /*STAMPA DA DB
+                Statement query = connessione.createStatement();
+                ResultSet rs=query.executeQuery(SQL_stampa);
+
+                while (rs.next()){
+                    System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getInt(3));
+                }
+              */
             connessione.close();
 
         } catch (SQLException e){
