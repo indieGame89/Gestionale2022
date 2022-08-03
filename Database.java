@@ -46,7 +46,7 @@ public class Database {
 
         try{
 
-            una_connesione.close();
+            una_connesione.close(); //chiudere la connessione
 
         }catch(SQLException e){
 

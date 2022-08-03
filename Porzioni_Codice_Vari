@@ -3,6 +3,12 @@
             String usr="postgres";
             String passw= "emandfp";
 
+            Impiegati impQuery=new Impiegati("aaa","Fenu", 150);
+
+            //String SQL = "INSERT INTO impiegato.impiegati values ('eee','fff',38)";
+            //String SQL_Param = "INSERT INTO impiegato.impiegati values (?,?,?)";
+            //String SQL_stampa="SELECT * FROM impiegato.impiegati";
+
             /*INSERIMENTO QUERY STATICA
                 Statement query = connessione.createStatement();
                 query.executeUpdate(SQL);
@@ -32,16 +38,14 @@
         /*
 
         DB_fake_dipenedenti db=new DB_fake_dipenedenti();
-        Impiegati impQuery=new Impiegati("aaa","Fenu", 150);
+
         Impiegati imp_rs;
         Scanner input=new Scanner(System.in);
 
         boolean flag=true;
 
 
-       //String SQL = "INSERT INTO impiegato.impiegati values ('eee','fff',38)";
-       //String SQL_Param = "INSERT INTO impiegato.impiegati values (?,?,?)";
-       //String SQL_stampa="SELECT * FROM impiegato.impiegati";
+
 
        ArrayList<Impiegati> lista_impiegati=new ArrayList<>();
 
